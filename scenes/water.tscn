@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmq0blmrx38dm"]
+
+[ext_resource type="Texture2D" uid="uid://cepo0yeiv7827" path="res://assets/sprites/world_tileset.png" id="1_lkkhq"]
+[ext_resource type="Script" uid="uid://dcmfuwd6bjqxy" path="res://scripts/water.gd" id="2_s6cdy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbufl"]
+atlas = ExtResource("1_lkkhq")
+region = Rect2(80, 144, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njh70"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbufl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbufl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Water" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_njh70")
+autoplay = "default"
+frame_progress = 0.434898
+script = ExtResource("2_s6cdy")
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]

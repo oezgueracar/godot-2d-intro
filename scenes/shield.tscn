@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dou0lmp0dee3d"]
+
+[ext_resource type="Script" uid="uid://ddwf6e14bortn" path="res://scripts/shield.gd" id="1_14qrs"]
+[ext_resource type="Texture2D" uid="uid://cepo0yeiv7827" path="res://assets/sprites/world_tileset.png" id="1_r03mi"]
+[ext_resource type="FontFile" uid="uid://by2iqm88pvqdg" path="res://assets/fonts/PixelOperator8.ttf" id="2_acwk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjaum"]
+size = Vector2(18, 15)
+
+[node name="Shield" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_14qrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r03mi")
+region_enabled = true
+region_rect = Rect2(129, 50, 14, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_tjaum")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -83.0
+offset_top = -45.0
+offset_right = 86.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("2_acwk7")
+theme_override_font_sizes/font_size = 8
+text = "Hi
+This is the end, good job :)"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
